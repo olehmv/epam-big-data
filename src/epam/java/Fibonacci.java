@@ -34,8 +34,8 @@ public class Fibonacci {
 			next = second;
 		}
 		if (n > 2) {
-			int fn = recursiveCalculation(n - 1);
-			int sn = recursiveCalculation(n - 2);
+			int fn = recursiveCalculation(n - 2);
+			int sn = recursiveCalculation(n - 1);
 			next = fn + sn;
 		}
 		sequence[n - 1] = next;
