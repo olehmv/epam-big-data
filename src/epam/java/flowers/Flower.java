@@ -16,7 +16,7 @@ public abstract class Flower {
 		this.cutTime = cutTime;
 		this.price = price;
 		this.length = length;
-		this.type = type;
+		this.type = flowerType;
 	}
 	public Date getCutTime() {
 		return cutTime;

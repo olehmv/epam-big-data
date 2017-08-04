@@ -20,17 +20,19 @@ public class Flowers {
 	public static void main(String[] args) {
 		 List<Bouquet> bouquets=new ArrayList<>();
 		 List<Flower> flowers=new ArrayList<>();
+		 for (int i = 0; i < 10; i++) {
 		 flowers.add(new Bougainvillea(new Date(),new BigDecimal(10.5),10.56,FlowerType.Subtropical));
 		 flowers.add(new Bougainvillea(new Date(),new BigDecimal(20.5),20.56,FlowerType.Subtropical));
-		 flowers.add(new WhiteRose(new Date(),new BigDecimal(10.5),10.56,FlowerType.Temperate));
-		 flowers.add(new Rose(new Date(),new BigDecimal(50.5),45.45,FlowerType.Temperate));
-		 flowers.add(new Rose(new Date(),new BigDecimal(20.5),35.12,FlowerType.Temperate));
+		 flowers.add(new Daffodils(new Date(),new BigDecimal(10.5),10.56,FlowerType.Temperate));
+		 flowers.add(new WhiteRose(new Date(),new BigDecimal(50.5),45.45,FlowerType.Temperate));
+		 flowers.add(new Peonies(new Date(),new BigDecimal(20.5),35.12,FlowerType.Temperate));
 		 bouquets.add(new Bouquet(flowers));
 		 bouquets.add(new Bouquet(flowers));
+		 }
 		 Flowers fff=new Flowers(bouquets,flowers);
-		 System.out.println("Longest "+fff.getBouquets().get(1).getLongest());
-		 System.out.println("Sum For Bouquet "+fff.getBouquets().get(1).getSum());
-		 System.out.println("Freshest "+ fff.getFreshestBouquet());
+		 System.out.println("Freshest "+ fff.getFreshestBouquet()+"\n");
+		 System.out.println("Longest - "+fff.getBouquets().get(1).getLongest());
+		 System.out.println("Sum For Bouquet - "+fff.getBouquets().get(1).getSum());
 	}
 
 	public Bouquet getFreshestBouquet() {
@@ -38,6 +40,7 @@ public class Flowers {
 		Date date = new Date();
 		for (Bouquet bouque : bouquets) {
 			if (bouque.getDate().before(date)) {
+				date=bouque.getDate();
 				bouquet = bouque;
 			}
 		}
@@ -72,6 +75,8 @@ public class Flowers {
 	public String toString() {
 		return "Flowers [bouquets=" + bouquets + ", flowers=" + flowers + "]";
 	}
+
+	
 
 }
 

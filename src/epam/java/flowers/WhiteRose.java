@@ -13,7 +13,8 @@ public class WhiteRose extends Rose {
 
 	@Override
 	public String toString() {
-		return "WriteRose [cutTime=" + cutTime + ", price=" + price + ", length=" + length +  "]";
+		return "WhiteRose [cutTime=" + cutTime + ", price=" + price + ", length=" + length + ", type=" + type + "]\n";
 	}
 
+	
 }

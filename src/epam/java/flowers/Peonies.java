@@ -12,9 +12,10 @@ public class Peonies extends Flower {
 
 	@Override
 	public String toString() {
-		return "Peonies [cutTime=" + cutTime + ", price=" + price + ", length=" + length +  "]";
+		return "Peonies [cutTime=" + cutTime + ", price=" + price + ", length=" + length + ", type=" + type + "]\n";
 	}
 
+	
 	
 
 }

@@ -11,9 +11,10 @@ public class Daffodils  extends Flower{
 
 	@Override
 	public String toString() {
-		return "Daffodils [cutTime=" + cutTime + ", price=" + price + ", length=" + length  + "]";
+		return "Daffodils [cutTime=" + cutTime + ", price=" + price + ", length=" + length + ", type=" + type + "]\n";
 	}
 
+	
 	
 
 }

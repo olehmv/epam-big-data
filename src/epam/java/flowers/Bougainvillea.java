@@ -10,12 +10,13 @@ public class Bougainvillea extends Flower {
 		super(cutTime, price, length, flowerType);
 	}
 
-
 	@Override
 	public String toString() {
-		return "Bougainvillea [cutTime=" + cutTime + ", price=" + price + ", length=" + length + "]";
+		return "Bougainvillea [cutTime=" + cutTime + ", price=" + price + ", length=" + length + ", type=" + type + "]\n";
 	}
 
+
+	
 	
 
 	
