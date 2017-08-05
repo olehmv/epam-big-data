@@ -14,7 +14,7 @@ public class Bouquet {
 			    .replace("[", "")  //remove the right bracket
 			    .replace("]", "")  //remove the left bracket
 			    .trim();           //remove trailing spaces from partially initialized arrays
-		return "Bouquet of "+flowers.size()+"flowers\n"+"Date: "+ date +"\n "+"Flowers:\n " + formattedString + "]";
+		return "Bouquet of "+flowers.size()+"flowers\n"+"Date: "+ date +"\n "+"Flowers:\n " + formattedString + ".";
 	}
 	private List<Flower> flowers;
 	private Date date;

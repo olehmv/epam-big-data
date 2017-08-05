@@ -5,7 +5,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import epam.java.flowers.Flower.FlowerType;
+import epam.java.flowers.FlowerType.BougainvilleaType;
+import epam.java.flowers.FlowerType.DaffodilsType;
+import epam.java.flowers.FlowerType.PeoniesType;
+import epam.java.flowers.FlowerType.RoseType;
 
 public class Flowers {
 
@@ -18,14 +21,15 @@ public class Flowers {
 	}
 
 	public static void main(String[] args) {
+		
 		 List<Bouquet> bouquets=new ArrayList<>();
 		 List<Flower> flowers=new ArrayList<>();
 		 for (int i = 0; i < 10; i++) {
-		 flowers.add(new Bougainvillea(new Date(),new BigDecimal(10.5),10.56,FlowerType.Subtropical));
-		 flowers.add(new Bougainvillea(new Date(),new BigDecimal(20.5),20.56,FlowerType.Subtropical));
-		 flowers.add(new Daffodils(new Date(),new BigDecimal(10.5),10.56,FlowerType.Temperate));
-		 flowers.add(new WhiteRose(new Date(),new BigDecimal(50.5),45.45,FlowerType.Temperate));
-		 flowers.add(new Peonies(new Date(),new BigDecimal(20.5),35.12,FlowerType.Temperate));
+		 flowers.add(new Bougainvillea(new Date(System.nanoTime()),new BigDecimal(10.5),10.56,BougainvilleaType.BarbaraKarst));
+		 flowers.add(new Bougainvillea(new Date(System.nanoTime()),new BigDecimal(20.5),20.56,BougainvilleaType.VeraPurple));
+		 flowers.add(new Daffodils(new Date(System.nanoTime()),new BigDecimal(10.5),10.56,DaffodilsType.MountHood));
+		 flowers.add(new Rose(new Date(System.nanoTime()),new BigDecimal(50.5),45.45,RoseType.WhiteRose));
+		 flowers.add(new Peonies(new Date(System.nanoTime()),new BigDecimal(20.5),35.12,PeoniesType.FestivaMaxima));
 		 bouquets.add(new Bouquet(flowers));
 		 bouquets.add(new Bouquet(flowers));
 		 }
@@ -37,7 +41,7 @@ public class Flowers {
 
 	public Bouquet getFreshestBouquet() {
 		Bouquet bouquet = null;
-		Date date = new Date();
+		Date date = new Date(System.nanoTime());
 		for (Bouquet bouque : bouquets) {
 			if (bouque.getDate().before(date)) {
 				date=bouque.getDate();
