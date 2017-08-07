@@ -1,8 +1,11 @@
 package epam.java.string;
 
+import java.text.BreakIterator;
 import java.util.Arrays;
+import java.util.Locale;
 import java.util.Map;
 import java.util.TreeMap;
+
 
 public class StringJ {
 
@@ -12,6 +15,12 @@ public class StringJ {
 				+ "Data beats emotions. Sean Rad Founder of Tinder. "
 				+ "The most valuable commodity I know of is information. Gordon Gekko, Wall Street. "
 				+ "Processed data is information, Processed information is knowledge, Processed knowledge is Wisdom. Ankala Subbarao. ");
+		String p = "Are you O.K.? Who, me?! Yes. Mr. & Mrs. Smith and Dr. John Doe. "
+				+ "This is how I tried to split a paragraph into a sentence. " + "But, there is a problem."
+				+ " My paragraph includes dates like Jan.13, 2014 , words like U.S and numbers like 2.2. "
+				+ "They all got split by the above code.";
+		System.out.println("\n"+breakTextToSentence(p));
+
 	}
 
 	private Map<String, Integer> map = new TreeMap<>();
@@ -21,8 +30,8 @@ public class StringJ {
 
 	public StringJ(String text) {
 		this.text = text;
-		strings=text.split("\\.\\s");
-		Arrays.stream(strings).forEach(x->{
+		strings = text.split("\\.\\s");
+		Arrays.stream(strings).forEach(x -> {
 			System.out.println(x);
 		});
 
@@ -56,13 +65,13 @@ public class StringJ {
 			String temp = split2[longestIndex];
 			split2[longestIndex] = split2[shortestIndex];
 			split2[shortestIndex] = temp;
-			StringBuilder b=new StringBuilder();
+			StringBuilder b = new StringBuilder();
 			Arrays.stream(split2).forEach(x -> {
 				x = x + " ";
 				b.append(x);
 			});
-			split[i]=b.toString();
-			System.out.println(split[i]+".");
+			split[i] = b.toString();
+			System.out.println(split[i] + ".");
 		}
 	}
 
@@ -100,6 +109,22 @@ public class StringJ {
 		}
 	}
 
+	public static String breakTextToSentence(String text) {
+		StringBuilder builder = new StringBuilder();
+		BreakIterator iterator = BreakIterator.getSentenceInstance(Locale.US);
+		iterator.setText(text);
+		int start = iterator.first();
+		for (int end = iterator.next(); end != BreakIterator.DONE; start = end, end = iterator.next()) {
+			String string = text.substring(start, end);
+			if (string.matches("([^.!?]|(?<=etc|Dr|Mr|Mrs|\\b[A-Za-z]|\\s)[.!?])+")) {
+				builder.append(string);
+			} else {
+				builder.append(string + "\n");
+			}
+		}
+		return builder.toString();
+	}
+
 	public Map<String, Integer> getMap() {
 		return map;
 	}
@@ -125,6 +150,7 @@ public class StringJ {
 	}
 
 }
+//("(?<!\\b\\p{Upper}\\w{0,4})(?=[.?!]\\s*\\p{Upper})[.?!]\\s*");
 // replaceAll("[^a-zA-Z-. ]", "")
 // \\s - matches single whitespace character
 // \\s+ - matches sequence of one or more whitespace characters.

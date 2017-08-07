@@ -21,7 +21,6 @@ public class Flowers {
 	}
 
 	public static void main(String[] args) {
-		
 		 List<Bouquet> bouquets=new ArrayList<>();
 		 List<Flower> flowers=new ArrayList<>();
 		 for (int i = 0; i < 10; i++) {
