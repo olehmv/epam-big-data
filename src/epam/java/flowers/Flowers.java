@@ -5,11 +5,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import epam.java.flowers.FlowerType.BougainvilleaType;
-import epam.java.flowers.FlowerType.DaffodilsType;
-import epam.java.flowers.FlowerType.PeoniesType;
-import epam.java.flowers.FlowerType.RoseType;
-
 public class Flowers {
 
 	private List<Bouquet> bouquets;
@@ -21,21 +16,37 @@ public class Flowers {
 	}
 
 	public static void main(String[] args) {
-		 List<Bouquet> bouquets=new ArrayList<>();
-		 List<Flower> flowers=new ArrayList<>();
-		 for (int i = 0; i < 10; i++) {
-		 flowers.add(new Bougainvillea(new Date(System.nanoTime()),new BigDecimal(10.5),10.56,BougainvilleaType.BarbaraKarst));
-		 flowers.add(new Bougainvillea(new Date(System.nanoTime()),new BigDecimal(20.5),20.56,BougainvilleaType.VeraPurple));
-		 flowers.add(new Daffodils(new Date(System.nanoTime()),new BigDecimal(10.5),10.56,DaffodilsType.MountHood));
-		 flowers.add(new Rose(new Date(System.nanoTime()),new BigDecimal(50.5),45.45,RoseType.WhiteRose));
-		 flowers.add(new Peonies(new Date(System.nanoTime()),new BigDecimal(20.5),35.12,PeoniesType.FestivaMaxima));
-		 bouquets.add(new Bouquet(flowers));
-		 bouquets.add(new Bouquet(flowers));
-		 }
-		 Flowers fff=new Flowers(bouquets,flowers);
-		 System.out.println("Freshest "+ fff.getFreshestBouquet()+"\n");
-		 System.out.println("Longest - "+fff.getBouquets().get(1).getLongest());
-		 System.out.println("Sum For Bouquet - "+fff.getBouquets().get(1).getSum());
+		List<Bouquet> bouquets = new ArrayList<>();
+		List<Flower> flowers = new ArrayList<>();
+		for (int i = 0; i < 10; i++) {
+			flowers.add(new Flower(new Date(System.nanoTime()), new BigDecimal(4), 5, FlowerType.Cactus.Pilly, true));
+			flowers.add(new Flower(new Date(System.nanoTime()), new BigDecimal(5), 4,
+					FlowerType.Bougainvillea.BarbaraKarst, false));
+			flowers.add(
+					new Flower(new Date(System.nanoTime()), new BigDecimal(6), 3, FlowerType.Rose.WhiteRose, false));
+			flowers.add(new Flower(new Date(System.nanoTime()), new BigDecimal(7), 2, FlowerType.Daffodils.MountHood,
+					false));
+			flowers.add(new Flower(new Date(System.nanoTime()), new BigDecimal(8), 1, FlowerType.Peonies.FernLeafPeony,
+					false));
+			bouquets.add(new Bouquet(flowers));
+			bouquets.add(new Bouquet(flowers));
+		}
+		Flowers fff = new Flowers(bouquets, flowers);
+		System.out.println("Freshest " + fff.getFreshestBouquet() + "\n");
+		System.out.println("Longest - " + fff.getBouquets().get(1).getLongest());
+		System.out.println("Sum For Bouquet - " + fff.getBouquets().get(1).getSum() + "\n");
+		System.out.println("Buquet with "+FlowerType.Cactus.Pilly+" is: \n"+fff.findBouquetByFlower(FlowerType.Cactus.Pilly));
+	}
+
+	public Bouquet findBouquetByFlower(Type type) {
+		for (Bouquet bouquet : bouquets) {
+			for(Flower f: bouquet.getFlowers()) {
+				if(f.getType().equals(type)) {
+					return bouquet;
+				}
+			}
+		}
+		return null;
 	}
 
 	public Bouquet getFreshestBouquet() {
@@ -43,7 +54,7 @@ public class Flowers {
 		Date date = new Date(System.nanoTime());
 		for (Bouquet bouque : bouquets) {
 			if (bouque.getDate().before(date)) {
-				date=bouque.getDate();
+				date = bouque.getDate();
 				bouquet = bouque;
 			}
 		}
@@ -79,17 +90,27 @@ public class Flowers {
 		return "Flowers [bouquets=" + bouquets + ", flowers=" + flowers + "]";
 	}
 
-	
-
 }
 
-//				Supplier<Flower> supplierFlowers = () -> new Bougainvillea(new Date(),new BigDecimal(doubleRandomInclusive(10.45,20.56)),doubleRandomInclusive(10.45,20.56),FlowerType.Subtropical);
-//				List<Flower> flowers= Stream
-//		            .generate(supplierFlowers)
-//		            .limit(10)
-//		            .collect(Collectors.toList());
-//		 Supplier<Bouquet> supplierBouquet = () -> new Bouquet(flowers);
-//		 List<Bouquet> bouquets = Stream
-//	            .generate(supplierBouquet)
-//	            .limit(10)
-//	            .collect(Collectors.toList());
+// flowers.add(new Bougainvillea(new Date(System.nanoTime()),new
+// BigDecimal(10.5),10.56,BougainvilleaType.BarbaraKarst));
+// flowers.add(new Bougainvillea(new Date(System.nanoTime()),new
+// BigDecimal(20.5),20.56,BougainvilleaType.VeraPurple));
+// flowers.add(new Daffodils(new Date(System.nanoTime()),new
+// BigDecimal(10.5),10.56,DaffodilsType.MountHood));
+// flowers.add(new Rose(new Date(System.nanoTime()),new
+// BigDecimal(50.5),45.45,RoseType.WhiteRose));
+// flowers.add(new Peonies(new Date(System.nanoTime()),new
+// BigDecimal(20.5),35.12,PeoniesType.FestivaMaxima));
+
+// Supplier<Flower> supplierFlowers = () -> new Bougainvillea(new Date(),new
+// BigDecimal(doubleRandomInclusive(10.45,20.56)),doubleRandomInclusive(10.45,20.56),FlowerType.Subtropical);
+// List<Flower> flowers= Stream
+// .generate(supplierFlowers)
+// .limit(10)
+// .collect(Collectors.toList());
+// Supplier<Bouquet> supplierBouquet = () -> new Bouquet(flowers);
+// List<Bouquet> bouquets = Stream
+// .generate(supplierBouquet)
+// .limit(10)
+// .collect(Collectors.toList());

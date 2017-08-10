@@ -1,11 +1,32 @@
 package epam.java.flowers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 enum FlowerType implements Type {
 	Subtropical, Temperate;
 
-	enum RoseType implements Type {
+	enum Cactus implements Type{
+		Pilly,Purple,Rocky;
+		
+
+		@Override
+		public Type getType() {
+			return this;
+		}
+
+		@Override
+		public Type getSyperType() {
+			return Subtropical;
+		}
+
+		@Override
+		public List<Type> getSubTypes() {
+			return null;
+		}
+		
+	}
+	enum Rose implements Type {
 		WhiteRose, YellowRose;
 		@Override
 		public Type getType() {
@@ -23,7 +44,7 @@ enum FlowerType implements Type {
 		}
 	}
 
-	enum PeoniesType implements Type {
+	enum Peonies implements Type {
 		FestivaMaxima, FernLeafPeony;
 		@Override
 		public Type getType() {
@@ -41,7 +62,7 @@ enum FlowerType implements Type {
 		}
 	}
 
-	enum BougainvilleaType implements Type {
+	enum Bougainvillea implements Type {
 		BarbaraKarst, VeraPurple;
 
 		@Override
@@ -60,7 +81,7 @@ enum FlowerType implements Type {
 		}
 	}
 
-	enum DaffodilsType implements Type {
+	enum Daffodils implements Type {
 		MountHood, YellowRiver, RijnveldEarlySensation;
 		@Override
 		public Type getType() {

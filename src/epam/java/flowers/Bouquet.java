@@ -4,6 +4,8 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
+import epam.java.flowers.FlowerType.Cactus;
+
 public class Bouquet {
 
 	
@@ -58,6 +60,9 @@ public class Bouquet {
 	private void setDate(Date date) {
 		this.date=date;
 	}
+
+
+	
 
 	
 	

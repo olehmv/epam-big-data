@@ -4,34 +4,49 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
-public abstract class Flower implements Type {
-	protected Date cutTime;;
+public class Flower implements Type {
+	protected Date date;
 	protected BigDecimal price;
 	protected double length;
-	protected Type superType;
 	protected Type type;
+	protected boolean isInBowl;
 
-	public Flower(Date cutTime, BigDecimal price, double length, Type type) {
-		this.cutTime = cutTime;
+	
+
+	public Flower(Date date, BigDecimal price, double length, Type type, boolean isInBowl) {
+		super();
+		this.date = date;
 		this.price = price;
 		this.length = length;
-		this.setSuperType(type.getSyperType());
-		this.setType(type);
+		this.type = type;
+		this.isInBowl = isInBowl;
 	}
+
 	@Override
 	public List<Type> getSubTypes() {
 		return type.getSubTypes();
 	}
+
 	@Override
 	public Type getSyperType() {
-		return superType;
-	}
-	public Date getCutTime() {
-		return cutTime;
+		return type.getSyperType();
 	}
 
-	public void setCutTime(Date cutTime) {
-		this.cutTime = cutTime;
+	
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	public boolean isInBowl() {
+		return isInBowl;
+	}
+
+	public void setInBowl(boolean isInBowl) {
+		this.isInBowl = isInBowl;
 	}
 
 	public BigDecimal getPrice() {
@@ -57,8 +72,15 @@ public abstract class Flower implements Type {
 	public void setType(Type type) {
 		this.type = type;
 	}
-	
-	public void setSuperType(Type superType) {
-		this.superType = superType;
+
+	@Override
+	public String toString() {
+		return "Flower [date=" + date + ", price=" + price + ", length=" + length + ", type="+type.getClass().getSimpleName()+"." + type + ", isInBowl="
+				+ isInBowl + "]\n";
 	}
+	
+	
+	
+	
+
 }
