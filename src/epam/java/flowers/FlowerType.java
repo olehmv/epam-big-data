@@ -1,13 +1,10 @@
 package epam.java.flowers;
 
-import java.util.ArrayList;
-import java.util.List;
-
 enum FlowerType implements Type {
-	Subtropical, Temperate;
+	ROSE,CACTUS,PEONIES,BOUGAINVILLEA,DAFFODILS;
 
 	enum Cactus implements Type{
-		Pilly,Purple,Rocky;
+		PILLY,PURPLE,ROCKY;
 		
 
 		@Override
@@ -17,17 +14,12 @@ enum FlowerType implements Type {
 
 		@Override
 		public Type getSyperType() {
-			return Subtropical;
-		}
-
-		@Override
-		public List<Type> getSubTypes() {
-			return null;
+			return CACTUS;
 		}
 		
 	}
 	enum Rose implements Type {
-		WhiteRose, YellowRose;
+		WHITEROSE, YELLOWROSE;
 		@Override
 		public Type getType() {
 			return this;
@@ -35,17 +27,14 @@ enum FlowerType implements Type {
 
 		@Override
 		public Type getSyperType() {
-			return Temperate;
+			return ROSE;
 		}
 
-		@Override
-		public List<Type> getSubTypes() {
-			return null;
-		}
+		
 	}
 
 	enum Peonies implements Type {
-		FestivaMaxima, FernLeafPeony;
+		FESTIVAMAXIMA, FERNLEAFPEONY;
 		@Override
 		public Type getType() {
 			return this;
@@ -53,17 +42,14 @@ enum FlowerType implements Type {
 
 		@Override
 		public Type getSyperType() {
-			return Subtropical;
+			return PEONIES;
 		}
 
-		@Override
-		public List<Type> getSubTypes() {
-			return null;
-		}
+		
 	}
 
 	enum Bougainvillea implements Type {
-		BarbaraKarst, VeraPurple;
+		BARBARAKARST, VERAPURPLE;
 
 		@Override
 		public Type getType() {
@@ -72,17 +58,14 @@ enum FlowerType implements Type {
 
 		@Override
 		public Type getSyperType() {
-			return Subtropical;
+			return BOUGAINVILLEA;
 		}
 
-		@Override
-		public List<Type> getSubTypes() {
-			return null;
-		}
+		
 	}
 
 	enum Daffodils implements Type {
-		MountHood, YellowRiver, RijnveldEarlySensation;
+		MOUNTHOOD, YELLOWRIVER, RIJNVELDEARLYSENSATION;
 		@Override
 		public Type getType() {
 			return this;
@@ -90,13 +73,10 @@ enum FlowerType implements Type {
 
 		@Override
 		public Type getSyperType() {
-			return Temperate;
+			return DAFFODILS;
 		}
 
-		@Override
-		public List<Type> getSubTypes() {
-			return null;
-		}
+		
 	}
 
 	@Override
@@ -109,10 +89,7 @@ enum FlowerType implements Type {
 		return null;
 	}
 
-	@Override
-	public List<Type> getSubTypes() {
-		return null;
-	}
+	
 }
 // RoseType roseType;
 // PeoniesType peoniesType;

@@ -2,29 +2,28 @@ package epam.java.flowers;
 
 import java.math.BigDecimal;
 import java.util.Date;
-import java.util.List;
 
 public class Flower implements Type {
-	protected Date date;
-	protected BigDecimal price;
-	protected double length;
-	protected Type type;
-	protected boolean isInBowl;
+	private Date date;
+	private BigDecimal price;
+	private double length;
+	private Type type;
+	private Container container;
 
-	
-
-	public Flower(Date date, BigDecimal price, double length, Type type, boolean isInBowl) {
+	public Flower(Date date, BigDecimal price, double length, Type type, Container container) {
 		super();
 		this.date = date;
 		this.price = price;
 		this.length = length;
 		this.type = type;
-		this.isInBowl = isInBowl;
+		this.setContainer(container);
 	}
-
-	@Override
-	public List<Type> getSubTypes() {
-		return type.getSubTypes();
+	public Flower(Date date, BigDecimal price, double length, Type type) {
+		super();
+		this.date = date;
+		this.price = price;
+		this.length = length;
+		this.type = type;
 	}
 
 	@Override
@@ -41,13 +40,7 @@ public class Flower implements Type {
 		this.date = date;
 	}
 
-	public boolean isInBowl() {
-		return isInBowl;
-	}
-
-	public void setInBowl(boolean isInBowl) {
-		this.isInBowl = isInBowl;
-	}
+	
 
 	public BigDecimal getPrice() {
 		return price;
@@ -72,12 +65,31 @@ public class Flower implements Type {
 	public void setType(Type type) {
 		this.type = type;
 	}
-
+	/**
+	 * @return the container
+	 */
+	public Container getContainer() {
+		return container;
+	}
+	/**
+	 * @param container the container to set
+	 */
+	public void setContainer(Container container) {
+		this.container = container;
+	}
 	@Override
 	public String toString() {
-		return "Flower [date=" + date + ", price=" + price + ", length=" + length + ", type="+type.getClass().getSimpleName()+"." + type + ", isInBowl="
-				+ isInBowl + "]\n";
+		if(getContainer()==null){
+			return "Flower [date=" + date + ", price=" + price + ", length=" + length + ", type=" + type.getSyperType()+"."+type.getType()+ "]\n";
+		}
+		return "Flower [date=" + date + ", price=" + price + ", length=" + length + ", type=" + type.getSyperType()+"."+type.getType() + ", in container= "
+				+ container + "]\n";
 	}
+
+	
+	
+	
+	
 	
 	
 	

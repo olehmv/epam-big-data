@@ -18,16 +18,18 @@ public class Flowers {
 	public static void main(String[] args) {
 		List<Bouquet> bouquets = new ArrayList<>();
 		List<Flower> flowers = new ArrayList<>();
-		for (int i = 0; i < 10; i++) {
-			flowers.add(new Flower(new Date(System.nanoTime()), new BigDecimal(4), 5, FlowerType.Cactus.Pilly, true));
+		for (int i = 0; i < 1; i++) {
+			flowers.add(new Flower(new Date(System.nanoTime()), new BigDecimal(4), 5, FlowerType.Cactus.PILLY, new Container(new BigDecimal(23),3,ContainerType.CLAY,Color.BLUE)));
 			flowers.add(new Flower(new Date(System.nanoTime()), new BigDecimal(5), 4,
-					FlowerType.Bougainvillea.BarbaraKarst, false));
+					FlowerType.Bougainvillea.BARBARAKARST));
 			flowers.add(
-					new Flower(new Date(System.nanoTime()), new BigDecimal(6), 3, FlowerType.Rose.WhiteRose, false));
-			flowers.add(new Flower(new Date(System.nanoTime()), new BigDecimal(7), 2, FlowerType.Daffodils.MountHood,
-					false));
-			flowers.add(new Flower(new Date(System.nanoTime()), new BigDecimal(8), 1, FlowerType.Peonies.FernLeafPeony,
-					false));
+					new Flower(new Date(System.nanoTime()), new BigDecimal(6), 3, FlowerType.Rose.WHITEROSE));
+			flowers.add(new Flower(new Date(System.nanoTime()), new BigDecimal(7), 2, FlowerType.Daffodils.MOUNTHOOD
+				));
+			flowers.add(new Flower(new Date(System.nanoTime()), new BigDecimal(8), 1, FlowerType.Peonies.FERNLEAFPEONY
+				));
+			flowers.add(new Flower(new Date(System.nanoTime()), new BigDecimal(8), 6, FlowerType.Peonies.FERNLEAFPEONY
+					,new Container(new BigDecimal(50),5,ContainerType.PlASTIC,Color.RED)));
 			bouquets.add(new Bouquet(flowers));
 			bouquets.add(new Bouquet(flowers));
 		}
@@ -35,7 +37,8 @@ public class Flowers {
 		System.out.println("Freshest " + fff.getFreshestBouquet() + "\n");
 		System.out.println("Longest - " + fff.getBouquets().get(1).getLongest());
 		System.out.println("Sum For Bouquet - " + fff.getBouquets().get(1).getSum() + "\n");
-		System.out.println("Buquet with "+FlowerType.Cactus.Pilly+" is: \n"+fff.findBouquetByFlower(FlowerType.Cactus.Pilly));
+		System.out.println("Buquet with "+FlowerType.Cactus.PILLY+" is: \n"+fff.findBouquetByFlower(FlowerType.Cactus.PILLY));
+
 	}
 
 	public Bouquet findBouquetByFlower(Type type) {

@@ -16,7 +16,7 @@ public class Bouquet {
 			    .replace("[", "")  //remove the right bracket
 			    .replace("]", "")  //remove the left bracket
 			    .trim();           //remove trailing spaces from partially initialized arrays
-		return "Bouquet of "+flowers.size()+"flowers\n"+"Date: "+ date +"\n "+"Flowers:\n " + formattedString + ".";
+		return "Bouquet of "+flowers.size()+" flowers\n"+"Date: "+ date +"\n "+"Flowers:\n " + formattedString + ".";
 	}
 	private List<Flower> flowers;
 	private Date date;
@@ -38,6 +38,9 @@ public class Bouquet {
 	public BigDecimal getSum() {
 		int sum=0;
 		for (Flower flower : flowers) {
+			if(flower.getContainer()!=null){
+				sum=sum+flower.getContainer().getPrice().intValue();
+			}
 			sum=sum + flower.getPrice().intValue();
 		}
 		return new BigDecimal(sum);
