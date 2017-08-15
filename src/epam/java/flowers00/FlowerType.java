@@ -1,4 +1,4 @@
-package epam.java.flowers;
+package epam.java.flowers00;
 
 enum FlowerType implements Type {
 	ROSE,CACTUS,PEONIES,BOUGAINVILLEA,DAFFODILS;

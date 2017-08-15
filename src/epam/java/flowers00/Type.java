@@ -1,4 +1,4 @@
-package epam.java.flowers;
+package epam.java.flowers00;
 
 public interface  Type {
 	Type getType();

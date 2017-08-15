@@ -1,10 +1,10 @@
-package epam.java.flowers;
+package epam.java.flowers00;
 
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
-import epam.java.flowers.FlowerType.Cactus;
+import epam.java.flowers00.FlowerType.Cactus;
 
 public class Bouquet {
 
