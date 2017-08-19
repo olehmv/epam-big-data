@@ -15,7 +15,7 @@ public class PaperDecorator extends ItemDecorator {
 
 	@Override
 	public double price() {
-		return 13 + item.price();
+		return price+item.price();
 	}
 
 	@Override

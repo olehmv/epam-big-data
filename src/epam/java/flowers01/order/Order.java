@@ -29,6 +29,9 @@ public class Order {
 		double p = payment.pay(calculateTotalPrice());
 		double d = delivery.deliver(items);
 		System.out.println("Payment fee: "+p + " Delivery cost: " + d);
+		double t=p+ d+calculateTotalPrice();
+		System.out.println("Total price for order: "+t);
+
 	}
 
 	public void addItem(Item item) {
@@ -48,7 +51,7 @@ public class Order {
 		for (Item item : items) {
 			total = total + item.price();
 		}
-		System.out.println("Calculate total - "+total);
+		System.out.println("Calculate total items price- "+total);
 		return total;
 	}
 
