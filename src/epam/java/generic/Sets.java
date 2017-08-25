@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 import static epam.java.generic.Watercolors.*;
 
+
 public class Sets {
 
 	public static <T> Set<T> union1(Set<T> a, Set<T> b) {
